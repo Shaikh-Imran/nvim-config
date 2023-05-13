@@ -65,7 +65,20 @@ return require'packer'.startup(function(use)
         }
     }
 
+    -- Editors
+    -- Auto Pair for generating closing bracket
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
+    -- Git Changes indicator in editor
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
     -- Misc
     -- undo tree for histoy of changes
     use 'mbbill/undotree'
