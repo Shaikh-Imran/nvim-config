@@ -18,6 +18,7 @@ return require'packer'.startup(function(use)
 
     -- harpoon for recent files
     use 'theprimeagen/harpoon'
+
     -- File Explorer End
 
     -- Theming Start
@@ -68,6 +69,9 @@ return require'packer'.startup(function(use)
     -- Misc
     -- undo tree for histoy of changes
     use 'mbbill/undotree'
+
+    -- Dashboard (start screen)
+    use  'goolord/alpha-nvim'
 
     -- Git Helper
     use 'tpope/vim-fugitive'
