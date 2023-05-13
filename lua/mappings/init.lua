@@ -1,4 +1,4 @@
------------------------------------------------------------
+------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
 
@@ -60,7 +60,7 @@ map('t', '<C-`>', '<C-\\><C-n>')                    -- exit
 
 
 -- Nvim Tree
-map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- toogle Explorer
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -89,5 +89,6 @@ set('n', '<leader>u', vim.cmd.UndotreeToggle)
 -- git status 
 set('n', '<leader>gs', vim.cmd.Git)
 
-
+-- Trouble Nvim Seup for list of errors
+set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle error list
 

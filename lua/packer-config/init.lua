@@ -62,6 +62,13 @@ return require'packer'.startup(function(use)
             {'hrsh7th/nvim-cmp'},     -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
             {'L3MON4D3/LuaSnip'},     -- Required
+
+            --Snippet
+            {'saadparwaiz1/cmp_luasnip'},
+            {'rafamadriz/friendly-snippets'},
+
+            -- Error list
+            {'folke/trouble.nvim'},
         }
     }
 
@@ -79,6 +86,13 @@ return require'packer'.startup(function(use)
             require('gitsigns').setup()
         end
     }
+
+    -- Indent Lines
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- Toogle comments
+    use 'tpope/vim-commentary'
+
     -- Misc
     -- undo tree for histoy of changes
     use 'mbbill/undotree'
@@ -88,4 +102,8 @@ return require'packer'.startup(function(use)
 
     -- Git Helper
     use 'tpope/vim-fugitive'
+
+    -- Floating Terminal
+    use 'voldikss/vim-floaterm'
+
 end)
