@@ -72,6 +72,9 @@ return require'packer'.startup(function(use)
         }
     }
 
+    -- null ls for elint, prettier etc
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- Editors
     -- Auto Pair for generating closing bracket
     use {
@@ -92,6 +95,9 @@ return require'packer'.startup(function(use)
 
     -- Toogle comments
     use 'tpope/vim-commentary'
+
+    -- Formatting
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     -- Misc
     -- undo tree for histoy of changes

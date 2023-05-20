@@ -3,15 +3,15 @@
 -----------------------------------------------------------
 
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap=true, silent=true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend('force', options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 local set = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
 
@@ -54,10 +54,6 @@ map('n', '<leader>q', ':qa!<CR>')
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
--- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
-map('t', '<C-`>', '<C-\\><C-n>')                    -- exit
-
 
 -- Nvim Tree
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- toogle Explorer
@@ -67,8 +63,11 @@ local builtin = require('telescope.builtin')
 set('n', '<leader>pf', builtin.find_files, {})
 set('n', '<C-p>', builtin.git_files, {})
 set('n', '<leader>ps', function()
-    builtin.grep_string({search = vim.fn.input("Grep > ")});
-    end)
+    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+end)
+
+-- Fotmatting
+set('n', '<C-L>', ":lua vim.lsp.buf.format()<CR>")
 
 -- Harpoon Setting
 local mark = require('harpoon.mark')
@@ -77,18 +76,17 @@ local ui = require('harpoon.ui')
 set('n', '<leader>a', mark.add_file)
 set('n', '<C-e>', ui.toggle_quick_menu)
 
-set('n', '<C-h>', function() ui.nav_file(1) end)
-set('n', '<C-t>', function() ui.nav_file(2) end)
-set('n', '<C-n>', function() ui.nav_file(3) end)
-set('n', '<C-s>', function() ui.nav_file(4) end)
+set('n', '<C-1>', function() ui.nav_file(1) end)
+set('n', '<C-2>', function() ui.nav_file(2) end)
+set('n', '<C-3>', function() ui.nav_file(3) end)
+set('n', '<C-4>', function() ui.nav_file(4) end)
 
 -- Undo Tree
 set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 
--- git status 
+-- git status
 set('n', '<leader>gs', vim.cmd.Git)
 
 -- Trouble Nvim Seup for list of errors
 set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle error list
-
