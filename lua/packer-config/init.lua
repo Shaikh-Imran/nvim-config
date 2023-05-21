@@ -1,115 +1,120 @@
-return require'packer'.startup(function(use)
-    -- Packer Plugin
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+	-- Packer Plugin
+	use("wbthomason/packer.nvim")
 
-    -- Icons
-    use 'nvim-tree/nvim-web-devicons'
+	-- Icons
+	use("nvim-tree/nvim-web-devicons")
 
-    -- File / Project Explorer
-    -- NVIM Tree
-    use 'nvim-tree/nvim-tree.lua'
+	-- File / Project Explorer
+	-- NVIM Tree
+	use("nvim-tree/nvim-tree.lua")
 
-    -- Telescope
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.1",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-    -- harpoon for recent files
-    use 'theprimeagen/harpoon'
+	-- harpoon for recent files
+	use("theprimeagen/harpoon")
 
-    -- File Explorer End
+	-- File Explorer End
 
-    -- Theming Start
-    -- color scheme
-    use 'EdenEast/nightfox.nvim'
+	-- Theming Start
+	-- color scheme
+	use("EdenEast/nightfox.nvim")
 
-    -- Bufferline or tabs
-    use {
-        'akinsho/bufferline.nvim',
-        tag = "*",
-        requires = 'nvim-tree/nvim-web-devicons'
-    }
+	-- Bufferline or tabs
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "*",
+		requires = "nvim-tree/nvim-web-devicons",
+	})
 
-    -- lua line
-    use 'nvim-lualine/lualine.nvim'
+	-- lua line
+	use("nvim-lualine/lualine.nvim")
 
-    -- Color string colorizer: Hex, RGB
-    use 'norcalli/nvim-colorizer.lua'
+	-- Color string colorizer: Hex, RGB
+	use("norcalli/nvim-colorizer.lua")
 
-    -- Theming end
+	-- Theming end
 
-    -- TreeSitter
-    use 'nvim-treesitter/nvim-treesitter'
+	-- TreeSitter
+	use("nvim-treesitter/nvim-treesitter")
 
-    -- LSP COnfiguration with lSP Zero
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {                                      -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                  pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+	-- LSP COnfiguration with lSP Zero
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{
+				-- Optional
+				"williamboman/mason.nvim",
+				run = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
 
-            --Snippet
-            {'saadparwaiz1/cmp_luasnip'},
-            {'rafamadriz/friendly-snippets'},
+			--Snippet
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "rafamadriz/friendly-snippets" },
 
-            -- Error list
-            {'folke/trouble.nvim'},
-        }
-    }
+			-- Error list
+			{ "folke/trouble.nvim" },
+		},
+	})
 
-    -- null ls for elint, prettier etc
-    use 'jose-elias-alvarez/null-ls.nvim'
+	-- lsp saga for a better LSP UI
+	use("glepnir/lspsaga.nvim")
 
-    -- Editors
-    -- Auto Pair for generating closing bracket
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+	-- Editors
+	-- Auto Pair for generating closing bracket
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 
-    -- Git Changes indicator in editor
-    use {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end
-    }
+	use("windwp/nvim-ts-autotag")
 
-    -- Indent Lines
-    use "lukas-reineke/indent-blankline.nvim"
+	-- Git Changes indicator in editor
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 
-    -- Toogle comments
-    use 'tpope/vim-commentary'
+	-- Indent Lines
+	use("lukas-reineke/indent-blankline.nvim")
 
-    -- Formatting
-    use 'jose-elias-alvarez/null-ls.nvim'
+	-- Toogle comments
+	use("tpope/vim-commentary")
 
-    -- Misc
-    -- undo tree for histoy of changes
-    use 'mbbill/undotree'
+	-- Formatting
+	use("jose-elias-alvarez/null-ls.nvim")
 
-    -- Dashboard (start screen)
-    use  'goolord/alpha-nvim'
+	-- Misc
+	-- undo tree for histoy of changes
+	use("mbbill/undotree")
 
-    -- Git Helper
-    use 'tpope/vim-fugitive'
+	-- Dashboard (start screen)
+	use("goolord/alpha-nvim")
 
-    -- Floating Terminal
-    use 'voldikss/vim-floaterm'
+	-- Git Helper
+	use("tpope/vim-fugitive")
 
+	-- Floating Terminal
+	use("akinsho/toggleterm.nvim")
 end)
