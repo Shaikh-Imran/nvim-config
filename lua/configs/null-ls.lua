@@ -1,10 +1,13 @@
+require("mason-null-ls").setup({
+	automatic_setup = true,
+})
 local null_ls = require("null-ls")
 
 local fmt = null_ls.builtins.formatting
 
 local sources = {
 	fmt.eslint,
-	fmt.prettier,
+	fmt.prettier_d_slim,
 	fmt.stylua,
 }
 

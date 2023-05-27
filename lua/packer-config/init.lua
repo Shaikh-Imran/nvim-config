@@ -103,6 +103,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-commentary")
 
 	-- Formatting
+	use("jay-babu/mason-null-ls.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	-- Misc

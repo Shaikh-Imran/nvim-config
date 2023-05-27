@@ -57,7 +57,7 @@ set("n", "<leader>ps", function()
 end)
 
 -- Fotmatting
-set("n", "<C-L>", ":lua vim.lsp.buf.format()<CR>")
+set("n", "<C-L>", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>")
 
 -- Harpoon Setting
 local mark = require("harpoon.mark")
