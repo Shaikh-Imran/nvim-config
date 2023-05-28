@@ -1,18 +1,26 @@
-require("mason-null-ls").setup({
-	automatic_setup = true,
-})
-local null_ls = require("null-ls")
+local status, null_ls = pcall(require, "null-ls")
+if not status then
+	return
+end
 
-local fmt = null_ls.builtins.formatting
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local sources = {
-	fmt.eslint,
-	fmt.prettier_d_slim,
-	fmt.stylua,
-}
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
 
 null_ls.setup({
-	sources = sources,
+	sources = {
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.diagnostics.eslint_d.with({
+			diagnostics_format = "[eslint] #{m}\n(#{c})",
+		}),
+	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -20,9 +28,13 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
+					lsp_formatting(bufnr)
 				end,
 			})
 		end
 	end,
 })
+
+vim.api.nvim_create_user_command("DisableLspFormatting", function()
+	vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+end, { nargs = 0 })
