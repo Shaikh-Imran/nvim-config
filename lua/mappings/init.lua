@@ -1,5 +1,5 @@
 ------------------------------------------------------
--- Define keymaps of Neovim and installed plugins.
+-- Define keyMaps of NeoVim and installed plugins.
 -----------------------------------------------------------
 
 local function map(mode, lhs, rhs, opts)
@@ -85,7 +85,7 @@ set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- git status
 set("n", "<leader>gs", vim.cmd.Git)
 
--- Trouble Nvim Seup for list of errors
+-- Trouble Nvim Setup for list of errors
 set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle error list
 
 -- BufferLine
@@ -93,7 +93,9 @@ set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>")
 set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<CR>")
 
 -- LSP Saga
-set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- next warn/error/hint etc
+set("n", "<M-Enter>", "<cmd>Lspsaga code_action<CR>") -- code action
+set("n", "<M-n>", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- next warn/error/hint etc
+set("n", "<M-p>", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- next warn/error/hint etc
 set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- show doc popup
 set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>") -- definition and where it has been used (references)
 set("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>") --
