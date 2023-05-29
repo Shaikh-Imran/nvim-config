@@ -13,7 +13,7 @@ local lsp_formatting = function(bufnr)
 		bufnr = bufnr,
 	})
 end
--- cofg
+-- cofig
 
 null_ls.setup({
 	sources = {
@@ -22,7 +22,13 @@ null_ls.setup({
 			diagnostics_format = "[eslint] #{m}\n(#{c})",
 		}),
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.codespell,
+		null_ls.builtins.code_actions.cspell,
+		null_ls.builtins.diagnostics.cspell.with({
+			-- Force the severity to be HINT
+			diagnostics_postprocess = function(diagnostic)
+				diagnostic.severity = vim.diagnostic.severity.HINT
+			end,
+		}),
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

@@ -25,7 +25,7 @@ return require("packer").startup(function(use)
 	-- Theming Start
 	-- color scheme
 	use("EdenEast/nightfox.nvim")
-  use { "catppuccin/nvim", as = "catppuccin" }
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- Bufferline or tabs
 	use({
@@ -79,6 +79,7 @@ return require("packer").startup(function(use)
 	use("glepnir/lspsaga.nvim")
 
 	-- Editors
+
 	-- Auto Pair for generating closing bracket
 	use({
 		"windwp/nvim-autopairs",
@@ -119,4 +120,14 @@ return require("packer").startup(function(use)
 
 	-- Floating Terminal
 	use("akinsho/toggleterm.nvim")
+
+	-- key mapping UI
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({})
+		end,
+	})
 end)
