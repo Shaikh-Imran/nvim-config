@@ -22,3 +22,6 @@ set.number = true
 
 set.hidden = true
 set.colorcolumn = "76"
+
+set.spelllang = "en_us"
+set.spell = true

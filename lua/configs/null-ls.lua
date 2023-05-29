@@ -13,6 +13,7 @@ local lsp_formatting = function(bufnr)
 		bufnr = bufnr,
 	})
 end
+-- cofg
 
 null_ls.setup({
 	sources = {
@@ -20,6 +21,8 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.eslint_d.with({
 			diagnostics_format = "[eslint] #{m}\n(#{c})",
 		}),
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.codespell,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

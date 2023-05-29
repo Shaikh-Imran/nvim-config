@@ -25,6 +25,7 @@ return require("packer").startup(function(use)
 	-- Theming Start
 	-- color scheme
 	use("EdenEast/nightfox.nvim")
+  use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Bufferline or tabs
 	use({

@@ -1,2 +1,3 @@
-## Nvim Config
+## NVim Config
 
+config is
