@@ -80,6 +80,15 @@ return require("packer").startup(function(use)
 
 	-- Editors
 
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	})
+
 	-- Auto Pair for generating closing bracket
 	use({
 		"windwp/nvim-autopairs",
@@ -89,6 +98,17 @@ return require("packer").startup(function(use)
 	})
 
 	use("windwp/nvim-ts-autotag")
+
+	-- surround
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
 
 	-- Git Changes indicator in editor
 	use({

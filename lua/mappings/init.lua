@@ -15,6 +15,7 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
+set("i", "jk", "<Esc>")
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
@@ -52,9 +53,7 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toogle Explorer
 local builtin = require("telescope.builtin")
 set("n", "<leader>pf", builtin.find_files, {})
 set("n", "<C-p>", builtin.git_files, {})
-set("n", "<leader>ps", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
+set("n", "<leader>ps", builtin.live_grep, {})
 
 -- Fotmatting
 set("n", "<C-L>", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>")
@@ -93,12 +92,30 @@ set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>")
 set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<CR>")
 
 -- LSP Saga
-set("n", "<M-Enter>", "<cmd>Lspsaga code_action<CR>") -- code action
-set("n", "<M-n>", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- next warn/error/hint etc
-set("n", "<M-p>", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- next warn/error/hint etc
+set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- code action
+set("n", "<C-N>", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- next warn/error/hint etc
+set("n", "<C-P>", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- next warn/error/hint etc
 set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- show doc popup
 set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>") -- definition and where it has been used (references)
 set("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>") --
 set("n", "gp", "<cmd>Lspsaga peek_definition<CR>") -- popup of definition code (q to quit)
 set("n", "gt", "<cmd>Lspsaga goto_definition<CR>") --  jump to the definition
 set("n", "gr", "<cmd>Lspsaga rename<CR>") -- rename to affect all references
+
+-- Hop Nvim
+
+-- place this in one of your configuration file(s)
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("", "f", function()
+	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, { remap = true })
+vim.keymap.set("", "F", function()
+	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+end, { remap = true })
+vim.keymap.set("", "t", function()
+	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set("", "T", function()
+	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 })
+end, { remap = true })
