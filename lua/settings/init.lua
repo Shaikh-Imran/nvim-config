@@ -19,6 +19,7 @@ set.termguicolors = true
 set.relativenumber = true
 set.cursorline = true
 set.number = true
+set.wrap = false
 
 set.hidden = true
 set.colorcolumn = "76"

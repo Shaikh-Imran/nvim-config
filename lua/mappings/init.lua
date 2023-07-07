@@ -42,6 +42,16 @@ map("n", "<leader>s", ":w<CR>")
 -- Close all windows and exit from Neovim with <leader> and q
 map("n", "<leader>Q", ":qa!<CR>")
 
+-- Move lines up and down in Visual mode
+map("v", "J", "m: '>+1<CR>gv=gv") -- Not Working
+
+-- Move Up and down a page
+map("n", "<C-u>", "<C-u>zz") -- up
+map("n", "<C-d>", "<C-d>zz") -- down
+
+-- copy over without overriding
+map("x", "<leader>p", '"_dp')
+
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
@@ -108,10 +118,10 @@ set("n", "gr", "<cmd>Lspsaga rename<CR>") -- rename to affect all references
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "f", function()
-	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
+	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true })
 vim.keymap.set("", "F", function()
-	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
 end, { remap = true })
 vim.keymap.set("", "t", function()
 	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })
