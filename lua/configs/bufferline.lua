@@ -2,8 +2,10 @@ vim.opt.termguicolors = true
 require("bufferline").setup({
 	options = {
 		separator_style = "slant",
-		show_close_icon = false,
-		show_buffer_close_icons = false,
+		show_close_icon = true,
+		buffer_close_icon = "󰅖",
+		show_buffer_close_icons = true,
+		right_mouse_command = "bdelete! %d",
 		color_icon = true,
 		show__buffer_icons = true,
 		offsets = { { filetype = "NvimTree", text = "", padding = 1 } },

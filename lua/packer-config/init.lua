@@ -33,6 +33,12 @@ return require("packer").startup(function(use)
 		tag = "*",
 		requires = "nvim-tree/nvim-web-devicons",
 	})
+	use({
+		"famiu/bufdelete.nvim",
+		config = function()
+			require("bufdelete")
+		end,
+	})
 
 	-- lua line
 	use("nvim-lualine/lualine.nvim")

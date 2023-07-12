@@ -52,18 +52,24 @@ map("n", "<C-d>", "<C-d>zz") -- down
 -- copy over without overriding
 map("x", "<leader>p", '"_dp')
 
+-- close current buffer
+map("n", "<C-b>", ":Bdelete<CR>")
+
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
 
 -- Nvim Tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- toogle Explorer
+map("n", "<leader>ee", ":NvimTreeToggle<CR>", opts) -- toogle Explorer
+map("n", "<leader>ef", ":NvimTreeFocus<CR>", opts) -- toogle Explorer
+map("n", "<leader>ec", ":NvimTreeFindFile<CR>", opts) -- toogle Explorer
 
 -- Telescope
 local builtin = require("telescope.builtin")
 set("n", "<leader>pf", builtin.find_files, {})
 set("n", "<C-p>", builtin.git_files, {})
 set("n", "<leader>ps", builtin.live_grep, {})
+set("n", "<leader>pb", builtin.buffers, {})
 
 -- Fotmatting
 set("n", "<C-L>", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>")

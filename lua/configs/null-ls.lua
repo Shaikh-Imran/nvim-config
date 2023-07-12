@@ -13,12 +13,7 @@ local lsp_formatting = function(bufnr)
 		bufnr = bufnr,
 	})
 end
-local cspellConfig = {
 
-	find_json = function(cwd)
-		return vim.fn.expand("/Users/ishaikh/imran/sync/dotfiles/cspell/cspell.json")
-	end,
-}
 -- config
 
 null_ls.setup({
@@ -28,24 +23,6 @@ null_ls.setup({
 			diagnostics_format = "[eslint] #{m}\n(#{c})",
 		}),
 		null_ls.builtins.formatting.stylua,
-
-		-- CSpell for Spellings
-
-		null_ls.builtins.code_actions.cspell.with({
-			config = {
-
-				find_json = function(cwd)
-					return vim.fn.expand("/Users/ishaikh/imran/sync/dotfiles/cspell/cspell.json")
-				end,
-			},
-		}),
-		null_ls.builtins.diagnostics.cspell.with({
-			config = cspellConfig,
-			-- Force the severity to be HINT
-			diagnostics_postprocess = function(diagnostic)
-				diagnostic.severity = vim.diagnostic.severity.HINT
-			end,
-		}),
 	},
 
 	on_attach = function(client, bufnr)

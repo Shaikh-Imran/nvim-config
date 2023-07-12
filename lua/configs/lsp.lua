@@ -7,8 +7,16 @@ end)
 lsp.ensure_installed({
 	-- Replace these with whatever servers you want to install
 	"tsserver",
-	"eslint",
 	"pyright",
+})
+
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"tsserver",
+		"pyright",
+		"eslint_d",
+		"prettierd",
+	},
 })
 
 local cmp = require("cmp")
