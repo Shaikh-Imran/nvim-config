@@ -105,14 +105,14 @@ set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle error list
 
 -- BufferLine
 set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>")
-set("n", "<S-Tab>", "<cmd>BufferLineCycleNext<CR>")
+set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>")
 
 -- LSP Saga
 set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- code action
 set("n", "<C-N>", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- next warn/error/hint etc
 set("n", "<C-P>", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- next warn/error/hint etc
 set("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- show doc popup
-set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>") -- definition and where it has been used (references)
+set("n", "gd", "<cmd>Lspsaga finder<CR>") -- definition and where it has been used (references)
 set("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>") --
 set("n", "gp", "<cmd>Lspsaga peek_definition<CR>") -- popup of definition code (q to quit)
 set("n", "gt", "<cmd>Lspsaga goto_definition<CR>") --  jump to the definition
@@ -129,7 +129,7 @@ end, { remap = true })
 vim.keymap.set("", "F", function()
 	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set("", "t", function()
+vim.keymap.set("", "<leader>f", function()
 	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })
 end, { remap = true })
 vim.keymap.set("", "T", function()

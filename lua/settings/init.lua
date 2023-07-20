@@ -26,3 +26,5 @@ set.colorcolumn = "76"
 
 set.spelllang = "en_us"
 set.spell = true
+
+-- set.clipboard = "unnamedplus"
